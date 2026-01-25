@@ -1,0 +1,22 @@
+package hotel.web;
+
+import java.io.IOException;
+
+import hotel.dao.ReservationDao;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/reservation/edit")
+public class ReservationEditServlet extends HttpServlet {
+	private final ReservationDao dao = new ReservationDao();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+		req.setAttribute("r", dao.findById(id));
+		req.getRequestDispatcher("/reservation-edit.jsp").forward(req, resp);
+	}
+}
