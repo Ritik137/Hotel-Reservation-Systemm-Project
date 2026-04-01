@@ -4,20 +4,13 @@ import hotel.dao.ReservationDao;
 import hotel.model.Reservation;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/reservation/create")
 public class ReservationCreateServlet extends HttpServlet {
 
     private final ReservationDao dao = new ReservationDao();
-
-    @Override
-    public void init() {
-        dao.createTableIfNotExists(); // table auto create
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -32,7 +25,7 @@ public class ReservationCreateServlet extends HttpServlet {
         r.setCheckOut(req.getParameter("checkOut"));
 
         try {
-            dao.insert(r);
+            dao.save(r); // ✅ Hibernate method
             req.getRequestDispatcher("/success.jsp").forward(req, resp);
         } catch (Exception e) {
             req.setAttribute("error", e.getMessage());

@@ -106,7 +106,7 @@
       <h2>📋 Reservations</h2>
       <div class="pill">Manage • Edit • Delete</div>
     </div>
-    <a class="btn" href="reservation-form.jsp">+ New Reservation</a>
+    <a class="btn" href="<%= request.getContextPath() %>/reservation-form.jsp">+ New Reservation</a>
   </div>
 
   <div class="card">

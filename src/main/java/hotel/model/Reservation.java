@@ -1,12 +1,28 @@
 package hotel.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "reservations")
 public class Reservation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "guest_name")
     private String guestName;
+
     private String email;
     private String phone;
+
+    @Column(name = "room_type")
     private String roomType;
+
+    @Column(name = "check_in")
     private String checkIn;
+
+    @Column(name = "check_out")
     private String checkOut;
 
     public int getId() { return id; }

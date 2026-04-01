@@ -15,7 +15,7 @@ public class SetupServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        dao.createTableIfNotExists();
+//        dao.createTableIfNotExists();
         resp.setContentType("text/plain");
         resp.getWriter().println("✅ Table 'reservations' ready!");
     }

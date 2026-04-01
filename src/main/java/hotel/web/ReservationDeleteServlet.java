@@ -16,7 +16,7 @@ public class ReservationDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int id = Integer.parseInt(req.getParameter("id"));
-		dao.deleteById(id);
+		dao.delete(id);
 		resp.sendRedirect(req.getContextPath() + "/reservation/list");
 	}
 }
